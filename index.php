@@ -1,95 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <title>Home</title>
-    <?php include 'php/head.php' ?>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Placement.AI</title>
+  <link href="../img/logo.png" rel="icon">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../css/AdminLTE.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/blue.css">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <style>
+    /* Custom Styles */
+    body {
+      background-color: #3c8dbc; /* Dark Blue */
+      color: #000; /* White */
+    }
+
+    .login-logo a {
+      color: #fff !important; /* White */
+    }
+
+    .login-box-body {
+      background-color: #367fa9 !important; /* Blue */
+    }
+
+    .btn-primary {
+      background-color: #367fa9 !important; /* Blue */
+      border-color: #357ca5 !important; /* Dark Blue */
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active,
+    .btn-primary.active,
+    .open .dropdown-toggle.btn-primary {
+      background-color: #3071a9 !important; /* Darker Blue */
+      border-color: #285e8e !important; /* Darker Dark Blue */
+    }
+
+    #footer {
+      background-color: #3c8dbc; /* Dark Blue */
+      border-color: #285e8e; /* Dark Dark Blue */
+    }
+
+    #footer ul li {
+      color: #fff; /* White */
+    }
+  </style>
+
 </head>
 
-<body>
+<body class="hold-transition login-page">
 
-    <!-- header starts -->
-    <?php include 'php/header.php' ?>
-    <!-- header ends -->
 
-    <section id="hero-animated" class="hero-animated d-flex align-items-center">
-        <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-            <h2 style="color: #3b5998;">Welcome to <span style="color: #4169e1;">Placement.AI</span></h2>
-            <p style="color: #3b5998;">For Your Entire Placement Journey.</p>
-            <div class="d-flex">
-                <a href="login.php" class="btn-get-started scrollto" style="background-color: #4169e1;">Login</a>
-            </div>
+  <?php
+  include '../uploads/admin_header.php';
+  ?>
+
+  <div class="login-box" id="sms">
+
+    <div class="login-logo text-white">
+      <a href="../index.php">Placement.AI</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body large">
+      <p class="login-box-msg mt-7">Admin Login</p>
+
+      <form action="checklogin.php" method="post">
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" name="username" placeholder="Username">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-    </section>
-
-    <main id="main">
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" name="password" placeholder="Password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat transition ease-in-out delay-150 duration-300">Sign In</button>
+          </div>
+          <!-- /.col -->
         </div>
-        </section><!-- End Featured Services Section -->
+        <?php
+        //If User Failed To log in then show error message.
+        if (isset($_SESSION['loginError'])) {
+        ?>
+          <div>
+            <p class="text-center">Invalid Email/Password! Try Again!</p>
+          </div>
+        <?php
+          unset($_SESSION['loginError']);
+        }
+        ?>
 
-        <!-- ======= Call To Action Section ======= -->
-        <section id="cta" class="cta" style="background-color: #3b5998;">
-            <div class="container" data-aos="zoom-out">
-                <div class="row g-5">
-                    <div class="col-lg-8 col-md-6 content d-flex flex-column justify-content-center order-last order-md-first text-center">
-                        <h3 style="color: #fff;">Placement.AI</h3>
-                        <p style="color: #fff;">The Placement.AI plays a crucial role in locating job opportunities for undergraduates and postgraduates passing out from the college by keeping in touch with reputed firms and industrial establishments. <br>The placement cell operates round the year to facilitate contacts between companies and graduates. The number of students placed through the campus interviews is continuously rising.</p>
-                        <a class="cta-btn align-self-center" href="#" style="background-color: #4169e1;">Get Started</a>
-                    </div>
-                    <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
-                        <div class="img">   
-                            <img src="assets/img/feature-7.jpg" alt="" class="img-fluid">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section><!-- End Call To Action Section -->
+      </form>
+    </div>
+    <!-- /.login-box-body -->
+  </div>
 
-        <!-- ======= Clients Section ======= -->
-        <section id="clients" class="clients" style="background-color: #4169e1;">
-            <div class="container" data-aos="zoom-out">
-                <div class="clients-slider swiper">
-                    <div class="swiper-wrapper align-items-center">
-                        <div class="swiper-slide"><img src="assets/img/clients/client-1.svg" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-2.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-3.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-4.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-5.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-6.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-7.png" class="img-fluid" alt=""></div>
-                        <div class="swiper-slide"><img src="assets/img/clients/client-8.png" class="img-fluid" alt=""></div>
-                    </div>
-                </div>
-            </div>
-        </section><!-- End Clients Section -->
+  <footer id="footer" class="text-gray-600 body-font border-t-2 border-gray-700 small mb-0">
+    <div class="pt-1 pb-2">
+      <ul class="flex space-x-16 justify-center text-white my-4">
+        <li><i class="fa fa-copyright" aria-hidden="true"></i>Placement.AI</li>
+        <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+        <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+        <li><i class="fa fa-instagram" aria-hidden="true"></i></li>
+        <li><i class="fa fa-linkedin" aria-hidden="true"></i></li>
+      </ul>
+    </div>
+  </footer>
 
-        <!-- ======= Features Section ======= -->
-        <section id="objectives" class="features" name="objectives" style="background-color: #3b5998;">
-            <div class="container" data-aos="fade-up">
-                <div class="tab-content">
-                    <div class="tab-pane active show" id="tab-1">
-                        <div class="row gy-4">
-                            <div class="col-lg-8 order-2 order-lg-1 mx-auto" data-aos="fade-up" data-aos-delay="100">
-                                <h3 style="color: #fff;">Objectives</h3>
-                                <p class="fst-itali" style="color: #fff;">Our Placement Portal serves various objectives:</p>
-                                <ul>
-                                    <li><i class="bi bi-check-circle-fill" style="color: #4169e1;"></i> Developing the students to meet the Industries recruitment process.</li>
-                                    <li><i class="bi bi-check-circle-fill" style="color: #4169e1;"></i> To motivate students to develop Technical knowledge and soft skills in terms of career planning, goal setting.</li>
-                                    <li><i class="bi bi-check-circle-fill" style="color: #4169e1;"></i> To produce world-class professionals who have excellent analytical skills, communication skills, team building spirit, and ability to work in a cross-cultural environment.</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Tab Content -->
-    </main><!-- End #main -->
+  <!-- jQuery 3 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../js/adminlte.min.js"></script>
+  <!-- iCheck -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
 
-    <!-- ======= Footer ======= -->
-    <?php include 'php/footer.php'; ?>
-    <!-- End Footer -->
-
-    <!-- TPO bot -->
-    <!-- tpo bot ends -->
 </body>
 
 </html>
-
+        
